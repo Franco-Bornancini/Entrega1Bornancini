@@ -7,7 +7,8 @@ const Init = () => {
     return (
         <div className="wrapper">
             <div className="container">
-            <h1 className="title">Primera Entrega</h1>
+                <h1 className="title">Primera Entrega</h1>
+                <span className="border-light"></span>
             </div>
         </div>
     );
