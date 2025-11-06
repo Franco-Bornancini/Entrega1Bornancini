@@ -1,0 +1,28 @@
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  /* background-color: #0a0a0a; */
+}
+.container {
+  background-color: rgba(255, 255, 255, 0.05); /* leve transparencia */
+  padding: 3rem 5rem;
+  border-radius: 20px;
+  box-shadow: 0 0 20px 2px rgba(255, 255, 255, 0.4); /* sombra blanca suave */
+  backdrop-filter: blur(5px); /* efecto vidrio */
+  text-align: center;
+  transition: box-shadow 0.3s ease;
+}
+
+.container:hover {
+  box-shadow: 0 0 30px 4px rgba(255, 255, 255, 0.7);
+}
+
+.title {
+  font-weight: bold;
+  font-size: 2.5rem;
+  color: white;
+  letter-spacing: 1px;
+}
