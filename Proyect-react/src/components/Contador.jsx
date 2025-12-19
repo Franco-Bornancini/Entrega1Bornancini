@@ -2,7 +2,6 @@ import React from 'react'
 
 const Contador = (props) => {
 
-  
     return (
         <div>
             <p>{props.contador}</p>
