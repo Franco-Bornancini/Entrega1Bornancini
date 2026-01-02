@@ -7,6 +7,7 @@ import Contacto from './components/Contacto'
 import { Route, Routes } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import ProductDetail from './components/ProductDetail'
+import CarritoPage from './components/CarritoPage'
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
         <Route path='/productos' element={<Productos></Productos>}></Route>
         <Route path='/productos/:name' element={<ProductDetail></ProductDetail>}></Route>
         <Route path='/contacto' element={<Contacto></Contacto>}></Route>
+        <Route path='/carrito' element={<CarritoPage></CarritoPage>}></Route>
       </Routes>
     </>
   )

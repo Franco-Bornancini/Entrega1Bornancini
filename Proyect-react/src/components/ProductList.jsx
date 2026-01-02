@@ -1,15 +1,27 @@
 import { Link } from 'react-router-dom'
 import '../styles/ProductList.css'
+import { miContexto } from '../CartProvider'
+import { useContext } from 'react'
 
-const ProductList = ({ products }) => {
-    console.log(products)
+const ProductList = ({ pokemons }) => {
+    console.log(pokemons)
+    const elValorDelContexto = useContext(miContexto)
+
+    function handleAddToCart(pokemon) {
+        console.log("Pokemon agregado al carrito", pokemon);
+        elValorDelContexto.setTotal(elValorDelContexto.total + 1);
+        elValorDelContexto.setPokemons([...elValorDelContexto.pokemons, pokemon]);
+    }
+
     return (
         <div className="product-list">
-        {products.map(product => (
-            <div key={product.name} className="product-item">
-            <h3>{product.name}</h3>
-            <p>{product.description}</p>
-            <button><Link to={`/productos/${product.name}`}>Ver pokemon</Link></button>
+        {pokemons.map(pokemon => (
+            <div key={pokemon.nombre} className="product-item">
+                <img src={pokemon.imagen} alt={pokemon.nombre} />
+                <h3>{pokemon.nombre}</h3>
+                <p>{pokemon.habilidad}</p>
+                <button><Link to={`/productos/${pokemon.nombre}`}>Ver pokemon</Link></button>
+                <button onClick={() => handleAddToCart(pokemon)}>Agregar al carrito</button>
             </div>
         ))}
         </div>
