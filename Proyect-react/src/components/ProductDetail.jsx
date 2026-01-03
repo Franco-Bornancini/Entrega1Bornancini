@@ -28,7 +28,6 @@ const ProductDetail = () => {
 
 
     function handleAddToCart(pokemon) {
-        console.log("Pokemon agregado al carrito", pokemon);
         elValorDelContexto.setTotal(elValorDelContexto.total + 1);
         elValorDelContexto.setPokemons([...elValorDelContexto.pokemons, pokemon]);
     }

@@ -23,23 +23,9 @@ const Productos = () => {
     });
   }, [])
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=20')
-  //     const data = await response.json()
-      
-  //     const addPokemonsCollection = collection(getFirestore(app), 'pokemons');
 
-  //     data.results.forEach( async (pokemon) => {
-  //       addDoc(addPokemonsCollection, {
-  //         nombre: pokemon.name,
-  //         habilidad: pokemon.ability
-  //       });
-  //     })
-  //   }
-  //   fetchData()
-  // }, [])
-
+  // CREE ESTA FUNCION PARA CARGAR LOS POKEMONS EN FIREBASE, PORQUE NO QUERIA AGREGARLOS MANUALMENTE, ME AYUDE CON LA IA
+  // PORQUE NO LOGRABA OBTENER TODOS LOS DATOS DE LOS POKEMONS (IMAGENES Y HABILIDADES) Y NO SABIA COO GUARDAR LAS HABILIADES EN UN ARRAY
   function handleAddPokemons() {
     const fetchData = async () => {
       try {
@@ -52,18 +38,24 @@ const Productos = () => {
           try {
             const detailRes = await fetch(pokemon.url)
             const detail = await detailRes.json()
+            console.log(detail)
 
             const habilidades = (detail.abilities || [])
               .slice(0, 3)
               .map(item => item.ability?.name || null)
 
+            const types = (detail.types || [])
+              .map(item => item.type?.name || null)
+            
+            
             const imagen = detail.sprites?.front_default || null
 
             await addDoc(addPokemonsCollection, {
               nombre: pokemon.name,
               habilidades,
               imagen,
-              url: pokemon.url
+              url: pokemon.url,
+              types: types,
             })
           } catch (innerErr) {
             console.error('Error fetching details for', pokemon.name, innerErr)

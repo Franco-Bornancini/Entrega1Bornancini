@@ -8,7 +8,6 @@ const ProductList = ({ pokemons }) => {
     const elValorDelContexto = useContext(miContexto)
 
     function handleAddToCart(pokemon) {
-        console.log("Pokemon agregado al carrito", pokemon);
         elValorDelContexto.setTotal(elValorDelContexto.total + 1);
         elValorDelContexto.setPokemons([...elValorDelContexto.pokemons, pokemon]);
     }
@@ -19,7 +18,7 @@ const ProductList = ({ pokemons }) => {
             <div key={pokemon.nombre} className="product-item">
                 <img src={pokemon.imagen} alt={pokemon.nombre} />
                 <h3>{pokemon.nombre}</h3>
-                <p>{pokemon.habilidad}</p>
+                {pokemon.types && <p>Tipo: {pokemon.types.join(', ')}</p>}
                 <button><Link to={`/productos/${pokemon.nombre}`}>Ver pokemon</Link></button>
                 <button onClick={() => handleAddToCart(pokemon)}>Agregar al carrito</button>
             </div>

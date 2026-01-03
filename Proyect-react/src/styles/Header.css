@@ -30,3 +30,20 @@
 .nav__link:active{
     color: #ff00bf;
 }
+
+.nav__link.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.nav__link.dropdown .dropdown-content {
+    display: none;
+    position: absolute;
+    list-style: none;
+    background-color: #282c34;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.nav__link.dropdown:hover .dropdown-content {
+    display: block;
+}
